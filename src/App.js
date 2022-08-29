@@ -10,10 +10,12 @@ function App() {
     setUsersList((prevUsersList) => {
       return [
         ...prevUsersList,
-        { name: uName, age: uAge, id: Math.random.toString() },
+        { name: uName, age: uAge, id: Math.random().toString() },
       ];
     });
   };
+
+  // console.log(usersList); //Debugging:CAREFUL CONSIDERATION IS REQUIRED FOR FUNCTION CALLING -MISSING'()'
 
   return (
     <div className="App">
