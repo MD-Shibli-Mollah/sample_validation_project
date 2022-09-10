@@ -26,6 +26,7 @@ const AddUser = (props) => {
         title: "Invalid age",
         message: "Please enter a valid age (Greater than 0).",
       });
+      setEnteredAge(""); //Previous Negative Age will be erased here///
       return;
     }
     //lifting the state up to App.js...
