@@ -4,6 +4,7 @@ import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
 import Button from "../Button/Button";
 import ErrorModal from "../UI/ErrorModal";
+import Wrapper from "../Helper/Wrapper";
 
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -13,15 +14,15 @@ const AddUser = (props) => {
   const addUserHandler = (event) => {
     event.preventDefault(); //The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur. For example, this can be useful when: Clicking on a "Submit" button, prevent it from submitting a form.
 
-    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+    if (enteredUsername.trim().length === 0) {
       setError({
         title: "Invalid input",
-        message: "Please enter a valid name and age (non-empty values).",
+        message: "Please enter a valid name.",
       });
       return;
     }
     //+ is used to convert any string to number...
-    if (+enteredAge < 1) {
+    if (enteredAge.trim().length === 0 || +enteredAge < 1) {
       setError({
         title: "Invalid age",
         message: "Please enter a valid age (Greater than 0).",
@@ -49,8 +50,9 @@ const AddUser = (props) => {
   };
 
   //ALWAYS CAREFUL FOR SPELLING MISTAKES FOR ATTRIBUTES////*****/
+  // Wrapper is used instead of div....//
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -77,7 +79,7 @@ const AddUser = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
